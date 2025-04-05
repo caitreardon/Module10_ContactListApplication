@@ -2,8 +2,15 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:ContactListApplication.ViewModels"
+             xmlns:converters="clr-namespace:ContactListApplication.Converters"
              x:Class="ContactListApplication.Views.ContactDetailsPage"
              Title="Contact Details">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:BoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ContentPage.Content>
         <ScrollView>
@@ -14,16 +21,16 @@
                         <Label Text="Contact Details" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,0,0,20" />
 
                         <Label Text="Name:" FontAttributes="Bold" />
-                        <Label Text="{Binding Contact.Name}" Margin="10,0,0,0" />
+                        <Label Text="{Binding ContactItem.Name}" Margin="10,0,0,0" />
 
                         <Label Text="Email:" FontAttributes="Bold" />
-                        <Label Text="{Binding Contact.Email}" Margin="10,0,0,0" />
+                        <Label Text="{Binding ContactItem.Email}" Margin="10,0,0,0" />
 
                         <Label Text="Phone Number:" FontAttributes="Bold" />
-                        <Label Text="{Binding Contact.PhoneNumber}" Margin="10,0,0,0" />
+                        <Label Text="{Binding ContactItem.PhoneNumber}" Margin="10,0,0,0" />
 
                         <Label Text="Description:" FontAttributes="Bold" />
-                        <Label Text="{Binding Contact.Description}" Margin="10,0,0,0" />
+                        <Label Text="{Binding ContactItem.Description}" Margin="10,0,0,0" />
 
                         <HorizontalStackLayout Spacing="10" HorizontalOptions="Center" Margin="0,20,0,0">
                             <Button Text="Edit" Command="{Binding EnableEditingCommand}" 
@@ -68,10 +75,4 @@
             </VerticalStackLayout>
         </ScrollView>
     </ContentPage.Content>
-
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <BoolConverter x:Key="InvertedBoolConverter" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
 </ContentPage>

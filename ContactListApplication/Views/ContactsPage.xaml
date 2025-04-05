@@ -28,7 +28,7 @@
                 </CollectionView.EmptyView>
 
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:Contact">
+                    <DataTemplate x:DataType="model:ContactItem">
                         <Frame Margin="5" Padding="10" BorderColor="LightGray" CornerRadius="10">
                             <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto">
                                 <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="18" Grid.Row="0" Grid.Column="0" />

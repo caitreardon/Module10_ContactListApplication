@@ -1,4 +1,3 @@
-using Android.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ContactListApplication.Models;
@@ -6,15 +5,15 @@ using System.Collections.ObjectModel;
 
 namespace ContactListApplication.ViewModels
 {
-    [QueryProperty(nameof(Contact), "Contact")]
+    [QueryProperty(nameof(ContactItem), "ContactItem")]
     [QueryProperty(nameof(Contacts), "Contacts")]
     public partial class ContactDetailsViewModel : ObservableObject
     {
         [ObservableProperty]
-        private Contact contact;
+        private ContactItem contactItem;
 
         [ObservableProperty]
-        private ObservableCollection<Contact> contacts;
+        private ObservableCollection<ContactItem> contacts;
 
         [ObservableProperty]
         private bool isEditing = false;
@@ -40,10 +39,10 @@ namespace ContactListApplication.ViewModels
         [RelayCommand]
         private void EnableEditing()
         {
-            EditName = Contact.Name;
-            EditEmail = Contact.Email;
-            EditPhoneNumber = Contact.PhoneNumber;
-            EditDescription = Contact.Description;
+            EditName = ContactItem.Name;
+            EditEmail = ContactItem.Email;
+            EditPhoneNumber = ContactItem.PhoneNumber;
+            EditDescription = ContactItem.Description;
             IsEditing = true;
         }
 
@@ -58,13 +57,13 @@ namespace ContactListApplication.ViewModels
                 return;
             }
 
-            Contact.Name = EditName;
-            Contact.Email = EditEmail;
-            Contact.PhoneNumber = EditPhoneNumber;
-            Contact.Description = EditDescription;
+            ContactItem.Name = EditName;
+            ContactItem.Email = EditEmail;
+            ContactItem.PhoneNumber = EditPhoneNumber;
+            ContactItem.Description = EditDescription;
 
             IsEditing = false;
-            OnPropertyChanged(nameof(Contact));
+            OnPropertyChanged(nameof(ContactItem));
         }
 
         [RelayCommand]

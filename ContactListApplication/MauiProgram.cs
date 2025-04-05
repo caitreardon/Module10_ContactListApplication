@@ -20,7 +20,7 @@ namespace ContactListApplication
                 });
 
             // Create a singleton of ObservableCollection<Contact> for sharing contacts between pages
-            var contacts = new ObservableCollection<Contact>();
+            var contacts = new ObservableCollection<ContactItem>();
             builder.Services.AddSingleton(contacts);
 
             // Register ViewModels

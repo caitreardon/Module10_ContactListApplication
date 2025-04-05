@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace ContactListApplication.Models
 {
-    public class Contact : INotifyPropertyChanged
+    public class ContactItem : INotifyPropertyChanged
     {
         private string _name;
         private string _email;

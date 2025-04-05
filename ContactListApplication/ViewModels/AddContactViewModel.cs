@@ -2,8 +2,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ContactListApplication.Models;
 using System.Collections.ObjectModel;
-using static Android.Util.EventLogTags;
-using static Java.Util.Jar.Attributes;
 
 namespace ContactListApplication.ViewModels
 {
@@ -21,9 +19,9 @@ namespace ContactListApplication.ViewModels
         [ObservableProperty]
         private string description;
 
-        private ObservableCollection<Contact> _contacts;
+        private ObservableCollection<ContactItem> _contacts;
 
-        public AddContactViewModel(ObservableCollection<Contact> contacts)
+        public AddContactViewModel(ObservableCollection<ContactItem> contacts)
         {
             _contacts = contacts;
         }
@@ -39,7 +37,7 @@ namespace ContactListApplication.ViewModels
                 return;
             }
 
-            var newContact = new Contact
+            var newContact = new ContactItem
             {
                 Name = Name,
                 Email = Email,

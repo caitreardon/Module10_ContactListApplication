@@ -8,14 +8,14 @@ namespace ContactListApplication.ViewModels
     public partial class ContactsViewModel : ObservableObject
     {
         [ObservableProperty]
-        private ObservableCollection<Contact> contacts;
+        private ObservableCollection<ContactItem> contacts;
 
         [ObservableProperty]
-        private Contact selectedContact;
+        private ContactItem selectedContact;
 
         public ContactsViewModel()
         {
-            Contacts = new ObservableCollection<Contact>();
+            Contacts = new ObservableCollection<ContactItem>();
         }
 
         [RelayCommand]
@@ -26,7 +26,7 @@ namespace ContactListApplication.ViewModels
 
             var navigationParameter = new Dictionary<string, object>
             {
-                { "Contact", SelectedContact },
+                { "ContactItem", SelectedContact },
                 { "Contacts", Contacts }
             };
 
