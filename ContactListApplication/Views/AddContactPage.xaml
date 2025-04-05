@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:ContactListApplication.ViewModels"
+             x:Class="ContactListApplication.Views.AddContactPage"
+             Title="Add New Contact">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="15">
+                <Label Text="Add New Contact" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,0,0,20" />
+
+                <Label Text="Name:" FontAttributes="Bold" />
+                <Entry Placeholder="Enter contact name" Text="{Binding Name}" />
+
+                <Label Text="Email:" FontAttributes="Bold" />
+                <Entry Placeholder="Enter email address" Keyboard="Email" Text="{Binding Email}" />
+
+                <Label Text="Phone Number:" FontAttributes="Bold" />
+                <Entry Placeholder="Enter phone number" Keyboard="Telephone" Text="{Binding PhoneNumber}" />
+
+                <Label Text="Description:" FontAttributes="Bold" />
+                <Editor Placeholder="Enter description" HeightRequest="100" AutoSize="TextChanges" Text="{Binding Description}" />
+
+                <Button Text="Save Contact" Command="{Binding SaveContactCommand}" 
+                        BackgroundColor="#2196F3" TextColor="White" 
+                        CornerRadius="10" Margin="0,20,0,0" 
+                        HeightRequest="50" />
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

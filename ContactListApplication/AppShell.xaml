@@ -3,13 +3,20 @@
     x:Class="ContactListApplication.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:ContactListApplication"
-    Shell.FlyoutBehavior="Disabled"
-    Title="ContactListApplication">
+    xmlns:views="clr-namespace:ContactListApplication.Views"
+    Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar>
+        <Tab Title="Add Contact">
+            <ShellContent
+                ContentTemplate="{DataTemplate views:AddContactPage}"
+                Route="AddContactPage" />
+        </Tab>
+        <Tab Title="Contacts">
+            <ShellContent
+                ContentTemplate="{DataTemplate views:ContactsPage}"
+                Route="ContactsPage" />
+        </Tab>
+    </TabBar>
 
 </Shell>

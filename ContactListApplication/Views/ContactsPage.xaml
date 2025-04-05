@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:ContactListApplication.ViewModels"
+             xmlns:model="clr-namespace:ContactListApplication.Models"
+             x:Class="ContactListApplication.Views.ContactsPage"
+             Title="Contacts">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddNewContactCommand}" IconImageSource="add_icon" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*" Padding="10">
+            <Label Text="Contact List" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" Grid.Row="0" />
+
+            <CollectionView Grid.Row="1" 
+                          ItemsSource="{Binding Contacts}"
+                          SelectionMode="Single"
+                          SelectedItem="{Binding SelectedContact}"
+                          SelectionChangedCommand="{Binding ContactSelectedCommand}">
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <Label Text="No contacts available" FontSize="18" TextColor="Gray" />
+                        <Button Text="Add New Contact" Command="{Binding AddNewContactCommand}" 
+                                Margin="0,20,0,0" BackgroundColor="#2196F3" TextColor="White" />
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Contact">
+                        <Frame Margin="5" Padding="10" BorderColor="LightGray" CornerRadius="10">
+                            <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto">
+                                <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="18" Grid.Row="0" Grid.Column="0" />
+                                <Label Text="{Binding Email}" FontSize="14" TextColor="DarkGray" Grid.Row="1" Grid.Column="0" />
+                                <Image Source="arrow_right" WidthRequest="20" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" VerticalOptions="Center" />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

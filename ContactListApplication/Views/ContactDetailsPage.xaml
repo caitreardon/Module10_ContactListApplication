@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:ContactListApplication.ViewModels"
+             x:Class="ContactListApplication.Views.ContactDetailsPage"
+             Title="Contact Details">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="15">
+                <!-- Display Mode -->
+                <Grid IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}">
+                    <VerticalStackLayout Spacing="15">
+                        <Label Text="Contact Details" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,0,0,20" />
+
+                        <Label Text="Name:" FontAttributes="Bold" />
+                        <Label Text="{Binding Contact.Name}" Margin="10,0,0,0" />
+
+                        <Label Text="Email:" FontAttributes="Bold" />
+                        <Label Text="{Binding Contact.Email}" Margin="10,0,0,0" />
+
+                        <Label Text="Phone Number:" FontAttributes="Bold" />
+                        <Label Text="{Binding Contact.PhoneNumber}" Margin="10,0,0,0" />
+
+                        <Label Text="Description:" FontAttributes="Bold" />
+                        <Label Text="{Binding Contact.Description}" Margin="10,0,0,0" />
+
+                        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center" Margin="0,20,0,0">
+                            <Button Text="Edit" Command="{Binding EnableEditingCommand}" 
+                                    BackgroundColor="#FFC107" TextColor="Black" 
+                                    WidthRequest="120" HeightRequest="50" CornerRadius="10" />
+
+                            <Button Text="Back" Command="{Binding GoBackCommand}" 
+                                    BackgroundColor="#9E9E9E" TextColor="White" 
+                                    WidthRequest="120" HeightRequest="50" CornerRadius="10" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Grid>
+
+                <!-- Edit Mode -->
+                <Grid IsVisible="{Binding IsEditing}">
+                    <VerticalStackLayout Spacing="15">
+                        <Label Text="Edit Contact" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,0,0,20" />
+
+                        <Label Text="Name:" FontAttributes="Bold" />
+                        <Entry Text="{Binding EditName}" />
+
+                        <Label Text="Email:" FontAttributes="Bold" />
+                        <Entry Text="{Binding EditEmail}" Keyboard="Email" />
+
+                        <Label Text="Phone Number:" FontAttributes="Bold" />
+                        <Entry Text="{Binding EditPhoneNumber}" Keyboard="Telephone" />
+
+                        <Label Text="Description:" FontAttributes="Bold" />
+                        <Editor Text="{Binding EditDescription}" HeightRequest="100" AutoSize="TextChanges" />
+
+                        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center" Margin="0,20,0,0">
+                            <Button Text="Save" Command="{Binding SaveChangesCommand}" 
+                                    BackgroundColor="#4CAF50" TextColor="White" 
+                                    WidthRequest="120" HeightRequest="50" CornerRadius="10" />
+
+                            <Button Text="Cancel" Command="{Binding CancelEditingCommand}" 
+                                    BackgroundColor="#F44336" TextColor="White" 
+                                    WidthRequest="120" HeightRequest="50" CornerRadius="10" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Grid>
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <BoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+</ContentPage>
