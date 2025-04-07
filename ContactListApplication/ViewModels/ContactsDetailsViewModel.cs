@@ -30,46 +30,46 @@ namespace ContactListApplication.ViewModels
         [ObservableProperty]
         private string editDescription;
 
-        [RelayCommand]
-        private async Task GoBack()
-        {
-            await Shell.Current.GoToAsync("..");
-        }
+        //[RelayCommand]
+        //private async Task GoBack()
+        //{
+        //    await Shell.Current.GoToAsync("..");
+        //}
 
-        [RelayCommand]
-        private void EnableEditing()
-        {
-            EditName = ContactItem.Name;
-            EditEmail = ContactItem.Email;
-            EditPhoneNumber = ContactItem.PhoneNumber;
-            EditDescription = ContactItem.Description;
-            IsEditing = true;
-        }
+        //[RelayCommand]
+        //private void EnableEditing()
+        //{
+        //    EditName = ContactItem.Name;
+        //    EditEmail = ContactItem.Email;
+        //    EditPhoneNumber = ContactItem.PhoneNumber;
+        //    EditDescription = ContactItem.Description;
+        //    IsEditing = true;
+        //}
 
-        [RelayCommand]
-        private async Task SaveChanges()
-        {
-            if (string.IsNullOrWhiteSpace(EditName) ||
-                string.IsNullOrWhiteSpace(EditEmail) ||
-                string.IsNullOrWhiteSpace(EditPhoneNumber))
-            {
-                await Shell.Current.DisplayAlert("Error", "Name, Email, and Phone Number are required fields.", "OK");
-                return;
-            }
+        //[RelayCommand]
+        //private async Task SaveChanges()
+        //{
+        //    if (string.IsNullOrWhiteSpace(EditName) ||
+        //        string.IsNullOrWhiteSpace(EditEmail) ||
+        //        string.IsNullOrWhiteSpace(EditPhoneNumber))
+        //    {
+        //        await Shell.Current.DisplayAlert("Error", "Name, Email, and Phone Number are required fields.", "OK");
+        //        return;
+        //    }
 
-            ContactItem.Name = EditName;
-            ContactItem.Email = EditEmail;
-            ContactItem.PhoneNumber = EditPhoneNumber;
-            ContactItem.Description = EditDescription;
+        //    ContactItem.Name = EditName;
+        //    ContactItem.Email = EditEmail;
+        //    ContactItem.PhoneNumber = EditPhoneNumber;
+        //    ContactItem.Description = EditDescription;
 
-            IsEditing = false;
-            OnPropertyChanged(nameof(ContactItem));
-        }
+        //    IsEditing = false;
+        //    OnPropertyChanged(nameof(ContactItem));
+        //}
 
-        [RelayCommand]
-        private void CancelEditing()
-        {
-            IsEditing = false;
-        }
+        //[RelayCommand]
+        //private void CancelEditing()
+        //{
+        //    IsEditing = false;
+        //}
     }
 }
